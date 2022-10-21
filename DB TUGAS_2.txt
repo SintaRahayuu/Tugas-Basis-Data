@@ -1,0 +1,35 @@
+CREATE DATABASE db_data;
+CREATE TABLE tbl_cus(
+ costumer_id VARCHAR(5) PRIMARY KEY NOT NULL,
+ costumer_name VARCHAR(30),
+ costumer_adress VARCHAR(30));
+CREATE TABLE tbl_ord(
+ order_id VARCHAR(5) PRIMARY KEY NOT NULL,
+ order_date y-m-d(30),
+ costumer_id VARCHAR(30)
+ qty INTEGER(10),
+ amount INTEGER(10));
+INSERT INTO tbl_cus VALUES 
+ ("CS001", "Aan", "Pasuruan"), 
+ ("CS002", "Hanif", "Banyuwangi"), 
+ ("CS003", "Mirza", "Malang"),
+ ("CS004", "Tanti", "Tegal"),
+ ("CS005", "Budie", "Kediri");
+INSERT INTO tbl_ord VALUES 
+ ("CS001", "2016-12-10", "CSS001", "1", "40000"), 
+ ("CS002", "2017-01-11", "CSS002", "2", "50000"),
+ ("CS003", "2017-01-12", "CSS005", "5", "35000");
+//inner join
+SELECT *
+FROM tbl_cus INNER JOIN tbl_ord ON tbl_cus.costumer_id = tbl_ord.costumer_id;
+//right join
+SELECT * FROM tbl_cus LEFT OUTER JOIN tbl_ord ON tbl_cus.costumer_id = tbl_ord.costumer_id;
+//left join
+SELECT *
+FROM tbl_cus RIGHT OUTER JOIN tbl_ord ON tbl_cus.costumer_id = tbl_ord.costumer_id;
+//union
+SELECT *
+FROM tbl_cus RIGHT OUTER JOIN tbl_ord ON tbl_cus.costumer_id = tbl_ord.costumer_id
+SELECT *
+FROM tbl_cus LEFT OUTER JOIN tbl_ord ON tbl_cus.costumer_id = tbl_ord.costumer_id;
+ 
